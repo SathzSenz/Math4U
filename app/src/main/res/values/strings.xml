@@ -3,4 +3,7 @@
     <string name="strt_bttn">Start Game</string>
     <string name="hgh_scr_bttn">High Scores</string>
     <string name="setting_bttn">Settings</string>
+    <string name="ply_agn">Play Again</string>
+    <string name="gm_over">Game Over !</string>
+    <string name="menu">Main Menu</string>
 </resources>

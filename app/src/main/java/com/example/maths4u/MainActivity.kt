@@ -14,10 +14,20 @@ class MainActivity : AppCompatActivity() {
         startGameButton.setOnClickListener{
             startGame()
         }
+
+        val highScoreButton: Button = findViewById(R.id.button2)
+        highScoreButton.setOnClickListener{
+            displayHighScore()
+        }
     }
 
     private fun startGame() {
         val intent = Intent(this, GameActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun displayHighScore() {
+        val intent = Intent(this, HighScores::class.java)
         startActivity(intent)
     }
 }

@@ -15,12 +15,12 @@ class MathQuizViewModel(application: Application) : AndroidViewModel(application
 
     var score: Int = 0
     var lives: Int = 3
-        private set
+
     init {
         generateEquation()
     }
 
-    private fun generateEquation() {
+    fun generateEquation() {
         operand1 = Random.nextInt(1, 101)
         operand2 = Random.nextInt(1, 101)
         operator = arrayOf('+', '-', '*', '/').random()
@@ -33,16 +33,26 @@ class MathQuizViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun checkAnswer(userAnswer: Int): Boolean {
+    fun checkAnswer(userAnswer: Int, timeTakenMs: Long): Int {
         val isCorrect = userAnswer == correctAnswer
+        val timeRemaining = (timeTakenMs / 1000).toInt()
+        val score = when {
+            isCorrect && timeRemaining <= 5 -> 30
+            isCorrect && timeRemaining <= 10 -> 25
+            isCorrect && timeRemaining <= 15 -> 20
+            isCorrect && timeRemaining <= 20 -> 15
+            isCorrect && timeRemaining <= 25 -> 10
+            isCorrect && timeRemaining <= 30 -> 5
+            else -> 0
+        }
         if(isCorrect) {
-            score += 10
+            this.score += score
         }
         else {
             lives--
         }
         generateEquation()
-        return isCorrect
+        return score
     }
 
     fun saveHighScore() {
@@ -51,5 +61,12 @@ class MathQuizViewModel(application: Application) : AndroidViewModel(application
             sharedPreferencesManager.saveHighScore(score)
         }
     }
+
+    fun saveRoundScore() {
+        val roundScores = sharedPreferencesManager.getAllHighScores().toMutableList()
+        roundScores.add(score)
+        sharedPreferencesManager.saveAllRoundScores(roundScores)
+    }
+
 
 }

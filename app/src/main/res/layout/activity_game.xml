@@ -2,51 +2,81 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     android:padding="16dp">
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scoreTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/audiowide"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/equationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100sp"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        android:layout_centerHorizontal="true"/>
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/userAnswerEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="4"
         android:layout_below="@id/equationTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:ems="4"
+        android:inputType="number"
+        android:shadowColor="@color/white"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/nextQuestionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Question"
         android:layout_below="@id/userAnswerEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/start_color"
+        android:fontFamily="@font/audiowide"
+        android:text="Next Question"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/scoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
-        android:textSize="18sp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/audiowide"
+        android:text="Score: 0"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/livesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lives: 3"
-        android:textSize="18sp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_below="@id/scoreTextView"/>
+        android:fontFamily="@font/audiowide"
+        android:text="Lives: 3"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
