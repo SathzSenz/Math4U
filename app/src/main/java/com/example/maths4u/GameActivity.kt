@@ -11,6 +11,7 @@ import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +25,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var nextQuestionButton: Button
     private lateinit var scoreTextView: TextView
     private lateinit var livesTextView: TextView
+    private lateinit var levelTextView: TextView
     private lateinit var vibrator: Vibrator
     private lateinit var timerTextView: TextView
     private lateinit var countDownTimer: CountDownTimer
@@ -42,6 +44,7 @@ class GameActivity : AppCompatActivity() {
         nextQuestionButton = findViewById(R.id.nextQuestionButton)
         scoreTextView = findViewById(R.id.scoreTextView)
         livesTextView = findViewById(R.id.livesTextView)
+        levelTextView = findViewById(R.id.levelTextView)
         timerTextView = findViewById(R.id.timerTextView)
 
         userAnswerEditText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
@@ -70,13 +73,20 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun updateScoreAndLives() {
+        val oldLevel = viewModel.currentLevel
+        levelTextView.text = "Level ${viewModel.currentLevel}"
         scoreTextView.text = "Score: ${viewModel.score}"
         livesTextView.text = "Lives: ${viewModel.lives}"
         equationTextView.text = "${viewModel.operand1} ${viewModel.operator} ${viewModel.operand2} = "
         userAnswerEditText.text.clear()
         countDownTimer.cancel()
-        timeLeftMs = 30000
+        timeLeftMs = viewModel.getTimeLeftMs()
         startTimer()
+
+        if(viewModel.currentLevel != oldLevel) {
+            val message = "Level ${viewModel.currentLevel} reached!"
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun gameOver() {
@@ -96,6 +106,7 @@ class GameActivity : AppCompatActivity() {
             override fun onFinish() {
                 viewModel.lives--
                 if(viewModel.lives == 0) {
+                    viewModel.saveRoundScore()
                     gameOver()
                 } else {
                     viewModel.generateEquation()

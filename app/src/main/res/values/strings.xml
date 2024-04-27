@@ -6,4 +6,17 @@
     <string name="ply_agn">Play Again</string>
     <string name="gm_over">Game Over !</string>
     <string name="menu">Main Menu</string>
+    <string name="about">About</string>
+    <string name="welcome">Welcome to Math4U !</string>
+    <string name="lvl1">Level 1</string>
+    <string name="lvl2">Level 2</string>
+    <string name="lvl3">Level 3</string>
+    <string name="lvl4">Level 4</string>
+    <string name="lvl5">Level 5</string>
+    <string name="lvl6">Level 6</string>
+    <string name="desc1">Answer the questions as quickly as Possible.</string>
+    <string name="desc2">Level unlocked after successfully answering 5 questions. Multiplication and Division operations unlocked</string>
+    <string name="desc3"></string>
+
+
 </resources>

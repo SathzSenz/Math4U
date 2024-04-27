@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/highScoreTextView"
-            android:layout_width="206dp"
+            android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/audiowide"
             android:gravity="center"
