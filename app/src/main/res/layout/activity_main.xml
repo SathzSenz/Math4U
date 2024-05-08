@@ -40,14 +40,14 @@
             android:layout_marginLeft="50sp"
             android:layout_marginTop="20sp"
             android:layout_marginRight="50sp"
-            android:backgroundTint="@color/h_score_clr"
+            android:backgroundTint="#237511"
             android:fontFamily="@font/audiowide"
             android:text="@string/hgh_scr_bttn"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/settings_bttn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50sp"

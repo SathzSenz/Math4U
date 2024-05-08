@@ -14,17 +14,17 @@ class HighScores : AppCompatActivity() {
 
         sharedPreferencesManager = SharedPreferencesManager(this)
 
-        val highScores = getTop5Highscores()
+        // Retrieve the top scores from the intent extra
+        val topScores = intent.getIntegerArrayListExtra("TOP_SCORES")
+        val leaderboardTextView: TextView = findViewById(R.id.leaderboardTextView)
 
-        val highScoresTextView: TextView = findViewById(R.id.highScoresTextView)
-        highScoresTextView.text = highScores.joinToString("\n")
-    }
-
-    private fun getTop5Highscores(): List<Int> {
-        val allRoundScores = sharedPreferencesManager.getAllHighScores()
-
-        val sortedHighScores = allRoundScores.sortedDescending()
-
-        return sortedHighScores.take(5)
+        // Check if topScores is not null and contains data
+        if (topScores != null && topScores.isNotEmpty()) {
+            // Convert the list of scores to a string and display it in the TextView
+            leaderboardTextView.text = topScores.joinToString("\n")
+        } else {
+            // Handle case where topScores is null or empty
+            leaderboardTextView.text = "No high scores available"
+        }
     }
 }

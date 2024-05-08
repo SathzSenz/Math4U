@@ -18,17 +18,18 @@ class GameOver : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(MathQuizViewModel::class.java)
 
+        //assigning variables to ids
         val highScoreTextView: TextView = findViewById(R.id.highScoreTextView)
         val newHighScoreTextView: TextView = findViewById(R.id.newHighScoreTextView)
         val roundScoreTextView: TextView = findViewById(R.id.roundScoreTextView)
         val playAgainButton: Button = findViewById(R.id.playAgainButton)
         val menuButton: Button = findViewById(R.id.menu_button)
 
-        val roundScore = intent.getIntExtra("ROUND_SCORE", 0)
-        val highScore = viewModel.sharedPreferencesManager.getHighScore()
+        val roundScore = intent.getIntExtra("ROUND_SCORE", 0)        //get roundscore
+        val highScore = viewModel.sharedPreferencesManager.getHighScore()       //get highscore using viewmodel
 
         if (roundScore == highScore) {
-            newHighScoreTextView.text = "Congratulations! New High Score"
+            newHighScoreTextView.text = "Congratulations! New High Score"     //dsiplay for new highscore
         } else {
             newHighScoreTextView.text = ""
         }
@@ -38,13 +39,13 @@ class GameOver : AppCompatActivity() {
 
 
         playAgainButton.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
+            val intent = Intent(this, GameActivity::class.java) //navigate to game activity
             startActivity(intent)
             finish()
         }
 
         menuButton.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)          //navigate to home activity
             startActivity(intent)
             finish()
         }

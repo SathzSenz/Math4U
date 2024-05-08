@@ -96,7 +96,7 @@ class MathQuizViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun saveRoundScore() {
-        val roundScores = sharedPreferencesManager.getAllHighScores().toMutableList()
+        val roundScores = sharedPreferencesManager.getAllHighScores().toMutableList()   //saving each round score
         roundScores.add(score)
         sharedPreferencesManager.saveAllRoundScores(roundScores)
     }

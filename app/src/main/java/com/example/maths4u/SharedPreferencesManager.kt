@@ -24,4 +24,15 @@ class SharedPreferencesManager(context: Context) {
         val roundScoresSet = roundScores.map { it.toString()}.toSet()
         sharedPreferences.edit().putStringSet("RoundScores", roundScoresSet).apply()
     }
+
+    fun getAllRoundScores(): List<Int> {
+        val roundScoreSet = sharedPreferences.getStringSet("RoundScores", setOf()) ?: setOf()
+        return roundScoreSet.map { it.toInt() }
+    }
+
+    fun saveRoundScore(score: Int) {
+        val roundScores = getAllRoundScores().toMutableList()
+        roundScores.add(score)
+        sharedPreferences.edit().putStringSet("RoundScores", roundScores.map { it.toString() }.toSet()).apply()
+    }
 }

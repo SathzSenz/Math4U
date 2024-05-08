@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,16 +65,17 @@
 
     <EditText
         android:id="@+id/userAnswerEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="166dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/equationTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="4"
+        android:hint="Enter Answer "
         android:inputType="number"
         android:shadowColor="@color/white"
         android:textColor="@color/black"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -119,5 +121,44 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pausedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mmkay"
+        android:visibility="gone"
+
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/resumeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/audiowide"
+            android:text="@string/resume"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/quitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/resumeButton"
+            android:layout_marginTop="20sp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/audiowide"
+            android:text="@string/quit"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resumeButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

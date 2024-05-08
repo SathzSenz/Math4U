@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Maths4U"
         tools:targetApi="31">
         <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
             android:name=".HighScores"
             android:exported="false" />
         <activity
